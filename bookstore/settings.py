@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django_extensions',
     'order',
     'product',
 ]
@@ -68,6 +69,10 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.QueryParameterVersioning',
+}
 
 WSGI_APPLICATION = "bookstore.wsgi.application"
 
