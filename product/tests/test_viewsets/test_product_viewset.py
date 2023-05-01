@@ -20,8 +20,8 @@ class TestProductViewSet(APITestCase):
 
     def test_get_all_product(self):
         response = self.client.get(
-            # reverse('product-list', kwargs={'version': 'v1'})
-            reverse('product-list')
+            reverse('product-list', kwargs={'version': 'v1'})
+            # reverse('product-list')
         )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -40,8 +40,8 @@ class TestProductViewSet(APITestCase):
         })
 
         response = self.client.post(
-            # reverse('product-list', kwargs={'version': 'v1'}),
-            reverse('product-list'),
+            reverse('product-list', kwargs={'version': 'v1'}),
+            # reverse('product-list'),
             data=data,
             content_type='application/json'
         )

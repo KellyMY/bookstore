@@ -19,8 +19,8 @@ class CategoryViewSet(APITestCase):
 
     def test_get_all_category(self):
         response = self.client.get(
-            # reverse('category-list', kwargs={'version': 'v1'})
-            reverse('category-list')
+            reverse('category-list', kwargs={'version': 'v1'})
+            # reverse('category-list')
         )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -34,15 +34,15 @@ class CategoryViewSet(APITestCase):
         })
 
         response = self.client.post(
-            # reverse('category-list', kwargs={'version': 'v1'}),
-            reverse('category-list'),
+            reverse('category-list', kwargs={'version': 'v1'}),
+            # reverse('category-list'),
             data=data,
             content_type='application/json'
         )
 
         # para ver se está funcionando
-        # import pdb; pdb.set_trace()
-        # coloca o seguinte comando no prompt: python manage.py test product/tests/test_viewsets
+        import pdb; pdb.set_trace()
+        # coloca o seguinte comando no prompt: poetry run python manage.py test product/tests/test_viewsets
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
