@@ -8,12 +8,19 @@ from product.factories import CategoryFactory, ProductFactory
 from order.factories import UserFactory
 from product.models import Product
 
+# from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+# from rest_framework.permissions import IsAuthenticated
+# from rest_framework.response import Response
+
 class TestProductViewSet(APITestCase):
     client = APIClient()
 
+    # authentication_classes = [SessionAuthentication, BasicAuthentication]
+    # permission_classes = [IsAuthenticated]
+
     def setUp(self):
         self.user = UserFactory()
-        token = Token.object.create(user=self.user)
+        token = Token.objects.create(user=self.user)
         token.save()
 
         self.product = ProductFactory(

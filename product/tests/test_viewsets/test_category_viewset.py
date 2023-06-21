@@ -4,15 +4,28 @@ from django.urls import reverse
 from rest_framework.test import APITestCase, APIClient
 
 from product.factories import CategoryFactory, ProductFactory
-# from order.factories import UserFactory
+from order.factories import UserFactory
 from product.models import Product, Category
-from django.shortcuts import get_object_or_404
+# from django.shortcuts import get_object_or_404
+
+from rest_framework.authtoken.models import Token
+
+# from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+# from rest_framework.permissions import IsAuthenticated
+# from rest_framework.response import Response
 
 class CategoryViewSet(APITestCase):
     client = APIClient()
 
+    # authentication_classes = [SessionAuthentication, BasicAuthentication]
+    # permission_classes = [IsAuthenticated]
+
     def setUp(self):
         self.category = CategoryFactory()
+
+        self.user = UserFactory()
+        token = Token.objects.create(user=self.user)
+        token.save()
 
         # self.category = CategoryFactory(
         #     title='technology',
