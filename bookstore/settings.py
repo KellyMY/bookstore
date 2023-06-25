@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'order',
     'product',
     'debug_toolbar',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -135,5 +136,10 @@ INTERNAL_IPS = [
 # faz aparecer um template base para criar conteúdo de cada aba(order/product)
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 5
+    'PAGE_SIZE': 5,
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication', # Autenticação base para outras autenticações
+        'rest_framework.authentication.SessionAuthentication', # Guarda a autenticação dentro de uma sessão
+        'rest_framework.authentication.TokenAuthentication',
+    ],
 }
