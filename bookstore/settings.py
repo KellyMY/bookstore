@@ -27,9 +27,7 @@ SECRET_KEY = "django-insecure-u*7zydgxz=(4%-1)8^03#r==uuv#h=gmpqbamx3j0@v422y^8^
 # DEBUG = True
 DEBUG = int(os.environ.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = [
-    "DJANGO_ALLOWED_HOSTS"
-]
+ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1']
 
 # ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
@@ -160,4 +158,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication', # Guarda a autenticação dentro de uma sessão
         'rest_framework.authentication.TokenAuthentication',
     ],
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAdminUser'
+#    ),
 }
