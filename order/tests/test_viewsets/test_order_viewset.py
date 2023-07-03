@@ -14,8 +14,6 @@ from order.models import Order
 from product.factories import CategoryFactory, ProductFactory
 from product.models import Product
 
-from rest_framework.authtoken.models import Token
-
 class TestOrderViewSet(APITestCase):
 
     client = APIClient()
